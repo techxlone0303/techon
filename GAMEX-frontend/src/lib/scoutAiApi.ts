@@ -25,7 +25,14 @@ export interface AnalyzePayload {
   url: string;
 }
 
-const BACKEND_URL = import.meta.env.VITE_SCOUT_BACKEND_URL || "http://localhost:3000";
+const getBackendHost = () => {
+  if (typeof window !== "undefined" && window.location.hostname) {
+    return window.location.hostname;
+  }
+  return "localhost";
+};
+
+const BACKEND_URL = import.meta.env.VITE_SCOUT_BACKEND_URL || `http://${getBackendHost()}:4000`;
 
 /**
  * Posts URL & Team context to Express backend /api/analyze

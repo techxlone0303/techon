@@ -9,7 +9,14 @@
  * - Live YouTube Esports Stream Tracking & Audience Hype Meter
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api/v1";
+const getBackendHost = () => {
+  if (typeof window !== "undefined" && window.location.hostname) {
+    return window.location.hostname;
+  }
+  return "localhost";
+};
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || `http://${getBackendHost()}:4000/api/v1`;
 
 export interface ValorantPlayer {
   name: string;
