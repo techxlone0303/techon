@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "buildCommand": "cd GAMEX-frontend && npm install && npm run build",
+  "outputDirectory": "GAMEX-frontend/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
